@@ -1,0 +1,57 @@
+@import url("//cdn.web-fonts.ge/fonts/bpg-mrgvlovani-caps/css/bpg-mrgvlovani-caps.min.css");
+
+body {
+    background: #f44d3c;
+}
+
+h1 {
+    color: #FFFFFF;
+
+}
+
+.btn-rnd {
+    display: block;
+    position: relative;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: none;
+    color: #FFFFFF;
+    padding: 10px 15px;
+    border: 1px #FFFFFF solid;
+    opacity: 1;
+    transition: all 0.3s linear;
+}
+
+.btn-rnd:hover {
+    background: #FFFFFF;
+    color: #f44d3c;
+}
+
+.btn-rnd:focus, .btn-rnd:active:focus, .btn-rnd.active:focus {
+    outline: 0 none;
+}
+
+#quote {
+    font-family: "BPG Mrgvlovani Caps", sans-serif;
+    color: #FFFFFF;
+    font-size: 40px;
+    margin-top: 40px;
+}
+
+.rating a {
+    float: right;
+    color: #aaa;
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: color .4s;
+}
+
+.rating a:hover,
+.rating a:focus,
+.rating a:hover ~ a,
+.rating a:focus ~ a {
+    color: orange;
+    cursor: pointer;
+}
+   
