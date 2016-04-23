@@ -9,16 +9,11 @@ quotesRef.on("value", function (snapshot) {
 }, function (errorObject) {
 	console.log("The read failed: " + errorObject.code);
 });
+var shownQuote;
 var $quote = $('#quote');
 var $author = $('#author');
-var $stars = stars();
-var shownQuote;
-var resetDialog = $("#resetModal");
-$("#reset").on("click", function () {
-	quoter = makeQuotesKeeper(quotes);
-	resetDialog.modal('hide');
-});
 $('#quoteGen').click(onQuoteGenClick);
+
 
 /* *  *  *  *  *  *  *  *  *  *  *  *  *  */
 /*                ფუნქციები               */
@@ -26,15 +21,9 @@ $('#quoteGen').click(onQuoteGenClick);
 
 function onQuoteGenClick() {
 	var q4show = quoter.getQuote();
-	if(!q4show) {
-		resetDialog.modal();
-		shownQuote = null;
-		return;
-	}
 	shownQuote = q4show;
 	$quote.text(q4show.text);
 	$author.text(q4show.author);
-	highlightStars(q4show.avg);
 	updateCounter()
 }
 
@@ -44,11 +33,20 @@ function makeQuotesKeeper(q) {
 		quote.avg = avg(quote.stars);
 		quote.initialIndex = ind;
 	});
+	// ასე იმიტომ ვაკეთებ, რომ არ გავწყვიტო რეფერნსი საწყის ცხრილთან და არ ამერიოს სათვალავი
+	var indexes = q.map(function (elm, ind) {return ind});
+	var _indexes = [];
+
 	return {
 		getQuote: function () {
-			return _quotes.splice(Math.floor(Math.random() * _quotes.length), 1)[0];
+			if (_indexes.length == 0) {
+				_indexes = indexes.slice(0);
+			}
+			return _quotes[_indexes.splice(Math.floor(Math.random() * _indexes.length), 1)[0]];
 		}
-	}
+	};
+	
+
 }
 
 function avg(stars) {
@@ -62,38 +60,10 @@ function avg(stars) {
 }
 
 
-function stars() {
-	var _stars = {};
-	var i = 1;
-	while (i < 6) {
-		_stars[i] = $('#star-' + i);
-		_stars[i].on("click", makeOnStarCkick(i - 1));
-		++i;
-	}
-	return _stars;
-	function makeOnStarCkick (rating) {
-		return function onStarclick () {
-			shownQuote.stars[rating]++;
-			shownQuote.avg = avg(shownQuote.stars);
-			highlightStars(shownQuote.avg);
-			var quoteInFireBase = quotesRef.child(shownQuote.initialIndex);
-			quoteInFireBase.update({
-				"stars": shownQuote.stars
-			});
-		};
-	}
-}
-
 function updateCounter () {
+	//TODO : უნდა დაიხვეწოს, ერთდროულად თუ რამდენიმე კლიენტი უყურებს ციტატს, მთვლელი არასწორი იქნება
 	var quoteInFireBase = quotesRef.child(shownQuote.initialIndex);
 	quoteInFireBase.update({
 		"viewed": ++shownQuote.viewed
 	});
-}
-function highlightStars(score) {
-	var i = 1;
-	while (i < 6) {
-		score < i ? $stars[i].blur() : $stars[i].focus();
-		++i;
-	}
 }
