@@ -1,10 +1,11 @@
-@import url("//cdn.web-fonts.ge/fonts/bpg-mrgvlovani-caps/css/bpg-mrgvlovani-caps.min.css");
+
 
 body {
     /*background: #f44d3c;*/
     background-image: url(../images/vintred.jpg);
-    padding-top: 70px;
+    padding-top: 30px;
 }
+
 
 h1 {
     color: #FFFFFF;
@@ -39,15 +40,17 @@ h1 {
     color: #FFFFFF;
     font-size: 40px;
     margin-top: 40px;
+    text-align: center;
 }
 
 #author {
     font-family: "BPG Ingiri Arial", sans-serif;
     color: #FFFFFF;
     font-size: 25px;
+    text-align: center;
 }
 
-.rating a {
+/*.rating a {
     float: right;
     color: #aaa;
     text-decoration: none;
@@ -62,4 +65,5 @@ h1 {
     color: orange;
     cursor: pointer;
 }
+*/
    
