@@ -1,19 +1,23 @@
 var quoter;
-var quotes;
-var quotesRef = new Firebase('https://ka-polit-quotes.firebaseio.com/quotes');
-quotesRef.on("value", function (snapshot) {
-	quotes = snapshot.val();
-	if (!quoter) { //ამ ობიექტს ვქმნით მხოლოდ ბაზიდან პირველ პასუხზე
-		quoter = makeQuotesKeeper(quotes);
+var $btn_quotGen = $('#quoteGen');
+$btn_quotGen.hide();
+$btn_quotGen.click(onQuoteGenClick);
+$.ajax("/api/yvitations", {
+	type    : 'GET',
+	dataType: 'json',
+	success : function (_quotes, textStatus, jqXHR) {
+		console.log(_quotes);
+		quoter = makeQuotesKeeper(_quotes);
+		$btn_quotGen.show();
+	},
+	error   : function (req, status, err) {
+		console.log('something went wrong', status, err);
 	}
-}, function (errorObject) {
-	console.log("The read failed: " + errorObject.code);
 });
+
 var shownQuote;
 var $quote = $('#quote');
 var $author = $('#author');
-$('#quoteGen').click(onQuoteGenClick);
-
 
 /* *  *  *  *  *  *  *  *  *  *  *  *  *  */
 /*                ფუნქციები               */
@@ -24,7 +28,7 @@ function onQuoteGenClick() {
 	shownQuote = q4show;
 	$quote.text(q4show.text);
 	$author.text(q4show.author);
-	updateCounter()
+	updateCounter(q4show.initialIndex);
 }
 
 function makeQuotesKeeper(q) {
@@ -34,7 +38,9 @@ function makeQuotesKeeper(q) {
 		quote.initialIndex = ind;
 	});
 	// ასე იმიტომ ვაკეთებ, რომ არ გავწყვიტო რეფერნსი საწყის ცხრილთან და არ ამერიოს სათვალავი
-	var indexes = q.map(function (elm, ind) {return ind});
+	var indexes = q.map(function (elm, ind) {
+		return ind
+	});
 	var _indexes = [];
 
 	return {
@@ -45,7 +51,6 @@ function makeQuotesKeeper(q) {
 			return _quotes[_indexes.splice(Math.floor(Math.random() * _indexes.length), 1)[0]];
 		}
 	};
-	
 
 }
 
@@ -59,11 +64,10 @@ function avg(stars) {
 	return Math.round(score / stared) || "0";
 }
 
-
-function updateCounter () {
-	//TODO : უნდა დაიხვეწოს, ერთდროულად თუ რამდენიმე კლიენტი უყურებს ციტატს, მთვლელი არასწორი იქნება
-	var quoteInFireBase = quotesRef.child(shownQuote.initialIndex);
-	quoteInFireBase.update({
-		"viewed": ++shownQuote.viewed
+function updateCounter(ind) {
+	$.ajax({
+		url: '/api/yvitations/' + ind,
+		type: 'PUT',
+		data: "0"
 	});
 }
