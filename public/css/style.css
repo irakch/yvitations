@@ -17,6 +17,7 @@ h1 {
     position: relative;
     bottom: -20px;
     left: 50%;
+    font-family: "BPG Nino Medium Caps", sans-serif;
     transform: translateX(-50%);
     background-color: #33a6cc;
     color: #FFFFFF;
