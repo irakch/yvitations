@@ -2,7 +2,7 @@
 
 body {
     /*background: #f44d3c;*/
-    background-image: url(../images/vintred.jpg);
+    background-color: #FFFFDD;
     padding-top: 30px;
 }
 
@@ -18,7 +18,7 @@ h1 {
     bottom: -20px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #BE3E3D;
+    background-color: #33a6cc;
     color: #FFFFFF;
     padding: 10px 15px;
     border: 1px #FFFFFF solid;
@@ -28,7 +28,7 @@ h1 {
 
 .btn-rnd:hover {
     background: #FFFFFF;
-    color: #f44d3c;
+    color: #33a6cc;
 }
 
 .btn-rnd:focus, .btn-rnd:active:focus, .btn-rnd.active:focus {
@@ -37,7 +37,7 @@ h1 {
 
 #quote {
     font-family: "BPG Nino Medium Caps", sans-serif;
-    color: #FFFFFF;
+    color: #33a6cc;
     font-size: 40px;
     margin-top: 40px;
     text-align: center;
@@ -45,7 +45,7 @@ h1 {
 
 #author {
     font-family: "BPG Ingiri Arial", sans-serif;
-    color: #FFFFFF;
+    color: #33a6cc;
     font-size: 25px;
     text-align: center;
 }
