@@ -22,7 +22,7 @@ h1 {
     background-color: #33a6cc;
     color: #FFFFFF;
     padding: 10px 15px;
-    border: 1px #FFFFFF solid;
+    border: none;
     opacity: 1;
     transition: all 0.3s linear;
 }
