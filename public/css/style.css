@@ -12,6 +12,9 @@ h1 {
 
 }
 
+.page-header { 
+    border-bottom:none; 
+}
 
 section {
     width: 100vw;
