@@ -20,47 +20,45 @@
 
 </head>
 
-<body>
+<body data-spy="scroll" data-target="">
 
 
 <!-- Page Content -->
-<div class="container-fluid">
+    <section id="showQuote">
+        <div class="page-header">
 
-    <div class="row row-centered">
+          <h1></h1>
+            <div>
+                <button id="quoteGen" type="button" class="btn-rnd">მანახე ფრაზები</button>
+            </div>                 
+            <div>
+                <p id="quote">...</p>
+                <p id="author">..</p>
+            </div>                    
+        </div>
+    </section>
+    <section id="addQuote">
+        <div class="page-header">
+            <h3 class="text-center">....</h3>
+        </div>
+            <form class="col-md-5 col-md-offset-4">
+                <div class="form-group">
+                    <textarea class="form-control" rows="5" placeholder="ჩაწერე ფრაზა"></textarea>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" placeholder="ფრაზის ავტორი" type="text">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" placeholder="შენი სახელი" type="text">
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-primary btn-block" placeholder="მიდი">
+                </div>
+                
+            </form>
         
-        <div class="center-block">
-            
-                <h1></h1>
-                    <div>
-                        <button id="quoteGen" type="button" class="btn-rnd">მანახე ფრაზები</button>
-                    </div>
-                   
-                    <div>
-                        <p id="quote">...</p>
-
-                        <p id="author">..</p>
-                    </div>
-                    
-
-                    <!--<a id="egg" href="#" title="" data-togglr="tooltip">.</a>-->
-
-            
-        </div>
-        <div class="row row-centered">
-            <div class="center-block">
-                <form>
-                    
-
-                </form>
-            </div>
-        </div>
-
-
-    </div>
-    <!-- /.row -->
-
-</div>
-<!-- /.container -->
+    </section>
+    
 
 <!-- jQuery Version 1.11.1 -->
 <script src="js/jquery.js"></script>
