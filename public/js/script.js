@@ -14,14 +14,43 @@ $.ajax("/api/yvitations", {
 		console.log('something went wrong', status, err);
 	}
 });
-
+$( document ).ready(function() {
+	onBackToQuotesClick();
+});
 var shownQuote;
 var $quote = $('#quote');
 var $author = $('#author');
+var $divShowQuote = $('#showQuote');
+var $divAddQuote = $('#addQuote');
+$('#addQuoteBtn').on("click", onAddQuoteClick);
+$('#backToQuotesBtn').on("click", onBackToQuotesClick);
 
 /* *  *  *  *  *  *  *  *  *  *  *  *  *  */
 /*                ფუნქციები               */
 /* *  *  *  *  *  *  *  *  *  *  *  *  *  */
+
+
+/**
+ * მსმენელი ღილაკზე „ფრაზის დამატება“
+ *
+ * მალავს ფრაზების ჩვენების განყოფილებას და აჩენს ფრაზების დამატების განყოფილებას
+ */
+
+function onAddQuoteClick () {
+	$divShowQuote.hide();
+	$divAddQuote.show()
+}
+
+/**
+ * მსმენელი ღილაკზე „ფრაზების ნახვა“
+ *
+ * მალავს ფრაზების დამატების განყოფილებას და აჩენს ფრაზების ჩვენების განყოფილებას
+ */
+
+function onBackToQuotesClick () {
+	$divShowQuote.show();
+	$divAddQuote.hide()
+}
 
 function onQuoteGenClick() {
 	var q4show = quoter.getQuote();
