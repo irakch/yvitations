@@ -53,6 +53,14 @@ section {
     text-align: center;
 }
 
+#toSubmit {
+    background-color: #FF8C00;
+}
+#toSubmit:hover {
+    background: #FFFFFF;
+    color: #FF8C00
+}
+
 #author {
     font-family: "BPG Ingiri Arial", sans-serif;
     color: #33a6cc;
