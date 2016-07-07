@@ -31,6 +31,7 @@ function onQuoteGenClick() {
 	updateCounter(q4show.initialIndex);
 }
 
+
 function makeQuotesKeeper(q) {
 	var _quotes = q.slice(0);
 	_quotes.forEach(function (quote, ind) {
@@ -53,6 +54,8 @@ function makeQuotesKeeper(q) {
 	};
 
 }
+
+
 
 function avg(stars) {
 	var score = 0;
