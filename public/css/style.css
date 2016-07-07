@@ -1,7 +1,7 @@
 
 
 body {
-    /*background: #f44d3c;*/
+    
     background-color: #FFFFDD;
     padding-top: 30px;
 }
@@ -50,7 +50,13 @@ section {
     color: #33a6cc;
     font-size: 34px;
     margin-top: 40px;
-    text-align: center;
+    /*text-align: center;*/
+}
+#author {
+    font-family: "BPG Ingiri Arial", sans-serif;
+    color: #33a6cc;
+    font-size: 25px;
+    /*text-align: center;*/
 }
 
 #toSubmit {
@@ -61,12 +67,7 @@ section {
     color: #FF8C00
 }
 
-#author {
-    font-family: "BPG Ingiri Arial", sans-serif;
-    color: #33a6cc;
-    font-size: 25px;
-    text-align: center;
-}
+
 
 /*.rating a {
     float: right;
