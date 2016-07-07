@@ -33,7 +33,7 @@ section {
     padding: 10px 15px;
     border: none;
     opacity: 1;
-    transition: all 0.3s linear;
+    transition: all 0.1s linear;
 }
 
 .btn-rnd:hover {
